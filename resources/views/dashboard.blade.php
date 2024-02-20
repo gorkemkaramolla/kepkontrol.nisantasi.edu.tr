@@ -48,6 +48,15 @@
             font-size: 20px;
             font-weight: bold;
         }
+        .color-danger{
+            color:red;
+        }
+        .color-success{
+            color: green;
+        }
+        .bolder{
+            font-weight: 800;
+        }
     </style>
 </head>
 
@@ -73,17 +82,17 @@
             <th>Kendi Fakültenizden / Yüksekokulunuzdan</th>
             <th>Okulunuzdan Diğer Birimlerden</th>
         </tr>
-        <tr>
+        <tr style="color:black;font-weight:bolder;">
             <td>Toplam Tamamlanız Gereken</td>
             <td id="toplamAyniFakulte"></td>
             <td id="toplamFarkliFakulte"></td>
         </tr>
-        <tr>
+        <tr style="color:green;font-weight:bolder;">
             <td>Tamamladığınız</td>
             <td id="tamamlananAyniFakulte"></td>
             <td id="tamamlananFarkliFakulte"></td>
         </tr>
-        <tr>
+        <tr style="color:red;font-weight:bolder;">
             <td>Eksik</td>
             <td id="eksikAyniFakulte"></td>
             <td id="eksikFarkliFakulte"></td>
@@ -130,9 +139,11 @@
                         cell1.textContent = activity.EKTINLIK_KEY + ' ' + activity.ETKINLIK_ADI;
                         cell2.textContent = activity.AYNI_FAKULTE === "Fakülte/MYO içi" ? "Aynı Fakülte" :
                             "Farklı Fakülte";
+                        cell2.classList.add(activity.AYNI_FAKULTE === "Fakülte/MYO içi" ? "bolder" : "normal");
                         cell3.textContent = activity.KATILIM === "Tamamlandı" ? "Katılım Sağlandı" :
                             "Katılım Sağlanmadı";
-
+                        cell3.classList.add(activity.KATILIM === "Tamamlandı" ? "color-success" : "color-danger");
+                        cell3.classList.add("bolder");
                     });
 
                     const tamamlanan_ayni_fakulte = data.filter(item => item.KATILIM === "Tamamlandı" && item.AYNI_FAKULTE==="Fakülte/MYO içi").length;
@@ -142,12 +153,12 @@
                     const toplam_ayni_fakulte = 6 // tamamlanan_ayni_fakulte+eksik_ayni_fakulte;
                     const toplam_farkli_fakulte = 2 // tamamlanan_farkli_fakulte+eksik_farkli_fakulte;
 
-                    document.getElementById('tamamlananAyniFakulte').textContent = tamamlanan_ayni_fakulte;
-                    document.getElementById('tamamlananFarkliFakulte').textContent = tamamlanan_farkli_fakulte;
-                    document.getElementById('eksikAyniFakulte').textContent = eksik_ayni_fakulte;
-                    document.getElementById('eksikFarkliFakulte').textContent = eksik_farkli_fakulte;
-                    document.getElementById('toplamAyniFakulte').textContent = toplam_ayni_fakulte;
-                    document.getElementById('toplamFarkliFakulte').textContent = toplam_farkli_fakulte;
+                    document.getElementById('tamamlananAyniFakulte').textContent = tamamlanan_ayni_fakulte ? tamamlanan_ayni_fakulte : "---";
+                    document.getElementById('tamamlananFarkliFakulte').textContent = tamamlanan_farkli_fakulte ? tamamlanan_farkli_fakulte : "---";
+                    document.getElementById('eksikAyniFakulte').textContent = eksik_ayni_fakulte ? eksik_ayni_fakulte : "---";
+                    document.getElementById('eksikFarkliFakulte').textContent = eksik_farkli_fakulte ? eksik_farkli_fakulte : "---";
+                    document.getElementById('toplamAyniFakulte').textContent = toplam_ayni_fakulte ? toplam_ayni_fakulte : "---";
+                    document.getElementById('toplamFarkliFakulte').textContent = toplam_farkli_fakulte ? toplam_farkli_fakulte : "---";
                 })
                 .catch(error => {
                     console.error('Error fetching data:', error);
