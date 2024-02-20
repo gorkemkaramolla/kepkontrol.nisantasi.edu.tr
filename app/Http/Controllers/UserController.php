@@ -108,6 +108,7 @@ class UserController extends Controller
                     'lastname' => $familyName,
                     'email' => $emailAddress,
                     'department' => $departmentName,
+                    "student_number" => $loginData['university_id'],
                 ]);
                 $content = $respons->getContent();
                 $decodedData = json_decode($content, true);
