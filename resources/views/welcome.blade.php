@@ -4,6 +4,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
 
     <title>Laravel</title>
 
@@ -62,7 +67,13 @@
 
 </head>
 
-<body>
+<body class="d-flex flex-column gap-5">
+    {{-- <div id="loadingPlaceholder" style="display: none;">Loading...</div> --}}
+    <div id="loadingPlaceholder" class="spinner-border position-absolute" role="status" style="display: none;">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <h1 style="font-size: 2em;" class="text-center">KEP II Etkinlikleri
+        Katılım Kontrol Sistemi</h1>
     <form class="login-form">
         <label for="username">Öğrenci Numarası</label>
         <input id="username" type="text" placeholder="Öğrenci Numarası">
@@ -71,12 +82,20 @@
         <input id="password" type="password" placeholder="******************">
 
         <button type="button" id="loginButton">Giriş Yap</button>
+        <div id="alertPlaceholder"></div>
+        <p>
+            Lütfen Sanal Kampüs kullanıcı ismi ve şifreniz ile giriş yapınız.
+        </p>
     </form>
 
     <script>
         document.getElementById('loginButton').addEventListener('click', function() {
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            var loadingPlaceholder = document.getElementById('loadingPlaceholder');
+            var alertPlaceholder = document.getElementById('alertPlaceholder');
+
+            loadingPlaceholder.style.display = 'block'; // Show the loading message
 
             fetch('/api/login', {
                     method: 'POST',
@@ -88,13 +107,24 @@
                         password: password,
                     }),
                 })
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        return response.json().then(data => {
+                            throw new Error(data.message);
+                        });
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     localStorage.setItem('userInformation', JSON.stringify(data));
                     window.location.href = '/dashboard'; // Redirect to the dashboard
                 })
                 .catch((error) => {
-                    console.error('Error:', error);
+                    alertPlaceholder.innerHTML =
+                        `<div class="alert alert-danger" role="alert">${error.message}</div>`;
+                })
+                .finally(() => {
+                    loadingPlaceholder.style.display = 'none'; // Hide the loading message
                 });
         });
     </script>
