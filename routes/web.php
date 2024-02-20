@@ -7,8 +7,13 @@ use Symfony\Component\DomCrawler\Crawler;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
 // h25514327122
 Route::get('tken', function () {
+
+
     $loginData = [
         'university_id' => "20202022043",
         'password' => "Gorkemdabbeosman33*",
@@ -20,6 +25,10 @@ Route::get('tken', function () {
     $cookies = [
         "CookUserName" => $loginData["university_id"],
     ];
+
+
+
+
 
     $response = Http::withHeaders(['Cookie' => http_build_query($cookies, '', '; ')])->withoutRedirecting()->post($url, $data);
     $htmlContent = $response->body();
