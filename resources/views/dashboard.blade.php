@@ -81,10 +81,10 @@
                 
                 const tamamlanan_ayni_fakulte = data.filter(item => item.KATILIM === "Tamamlandı" && item.AYNI_FAKULTE==="Fakülte/MYO içi").length;
                 const tamamlanan_farkli_fakulte = data.filter(item => item.KATILIM === "Tamamlandı" && item.AYNI_FAKULTE==="Fakülte/MYO dışı").length;
-                const eksik_ayni_fakulte = data.filter(item => item.KATILIM === "" && item.AYNI_FAKULTE==="Fakülte/MYO içi").length;;
-                const eksik_farkli_fakulte = data.filter(item => item.KATILIM === "" && item.AYNI_FAKULTE==="Fakülte/MYO dışı").length;
-                const toplam_ayni_fakulte = tamamlanan_ayni_fakulte+eksik_ayni_fakulte;
-                const toplam_farkli_fakulte = tamamlanan_farkli_fakulte+eksik_farkli_fakulte;
+                const eksik_ayni_fakulte = Math.max(0, 6-tamamlanan_ayni_fakulte); // data.filter(item => item.KATILIM === "" && item.AYNI_FAKULTE==="Fakülte/MYO içi").length;
+                const eksik_farkli_fakulte = Math.max(0, 2-tamamlanan_farkli_fakulte); // data.filter(item => item.KATILIM === "" && item.AYNI_FAKULTE==="Fakülte/MYO içi").length; // data.filter(item => item.KATILIM === "" && item.AYNI_FAKULTE==="Fakülte/MYO dışı").length;
+                const toplam_ayni_fakulte = 6 // tamamlanan_ayni_fakulte+eksik_ayni_fakulte;
+                const toplam_farkli_fakulte = 2 // tamamlanan_farkli_fakulte+eksik_farkli_fakulte;
 
                 document.getElementById('tamamlananAyniFakulte').textContent = tamamlanan_ayni_fakulte;
                 document.getElementById('tamamlananFarkliFakulte').textContent = tamamlanan_farkli_fakulte;
@@ -94,12 +94,6 @@
                 document.getElementById('toplamFarkliFakulte').textContent = toplam_farkli_fakulte;
                 
 
-                /*document.getElementById('totalFromYourFaculty').textContent = data.totalFromYourFaculty;
-                document.getElementById('totalFromOtherUnits').textContent = data.totalFromOtherUnits;
-                document.getElementById('completedFromYourFaculty').textContent = data.completedFromYourFaculty;
-                document.getElementById('completedFromOtherUnits').textContent = data.completedFromOtherUnits;
-                document.getElementById('remainingFromYourFaculty').textContent = data.remainingFromYourFaculty;
-                document.getElementById('remainingFromOtherUnits').textContent = data.remainingFromOtherUnits;*/
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
