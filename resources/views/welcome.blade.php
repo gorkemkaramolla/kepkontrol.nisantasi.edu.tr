@@ -75,10 +75,10 @@
     <h1 style="font-size: 2em;" class="text-center">KEP II Etkinlikleri
         Katılım Kontrol Sistemi</h1>
     <form class="login-form">
-        <label for="username">Öğrenci Numarası</label>
-        <input id="username" type="text" placeholder="Öğrenci Numarası">
+        <label for="username">Sanal Kampüs Kullanıcı Adı / Username for Virtual Campus</label>
+        <input id="username" type="text" placeholder="Sanal Kampüs Kullanıcı Adı / Username for Virtual Campus">
 
-        <label for="password">Şifre</label>
+        <label for="password">Sanal Kampüs Şifresi / Password for Virtual Campus</label>
         <input id="password" type="password" placeholder="******************">
 
         <button type="button" id="loginButton">Giriş Yap</button>
