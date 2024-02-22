@@ -82,7 +82,7 @@
 
     </nav>
     <div class="container">
-        <h1>KEP II ETKİNLİKLERİ KATILIM DURUMU</h1>
+        <h1>KEP II ETKİNLİKLERİ s KATILIM DURUMU</h1>
         <p>Son güncellenme tarihi 22.02.2024 17:00</p>
         <div class="table-responsive">
             <table class="table" style="table-layout: fixed;">
