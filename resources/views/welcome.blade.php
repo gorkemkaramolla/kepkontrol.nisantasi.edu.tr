@@ -72,7 +72,9 @@
     <div id="loadingPlaceholder" class="spinner-border position-absolute" role="status" style="display: none;">
         <span class="visually-hidden">Loading...</span>
     </div>
-    <h1 style="font-size: 2em;" class="text-center">KEP II Etkinlikleri
+    <img src="/logo-nisantasi.png" alt="">
+
+    <h1 style="font-size: 2em; " class="text-center">KEP II Etkinlikleri
         Katılım Kontrol Sistemi</h1>
     <form class="login-form">
         <label for="username">Sanal Kampüs Kullanıcı Adı / Username for Virtual Campus</label>

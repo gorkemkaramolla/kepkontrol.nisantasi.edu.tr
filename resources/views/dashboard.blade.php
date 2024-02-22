@@ -83,26 +83,27 @@
     </nav>
     <div class="container">
         <h1>KEP II ETKİNLİKLERİ KATILIM DURUMU</h1>
-        <p>Son güncellenme tarihi 19.02.2024 09:00</p>
+        <p>Son güncellenme tarihi 22.02.2024 17:00</p>
         <div class="table-responsive">
-            <table class="table">
+            <table class="table" style="table-layout: fixed;">
                 <tbody>
                     <tr>
-                        <th style="with:200px !important" scope="row" colspan="2">Öğrenci Numarası / Student
+                        <th style="width:35% !important" scope="row" colspan="2">Öğrenci Numarası / Student
                             Number</th>
                         <td id="studentNumber"></td>
                     </tr>
                     <tr>
-                        <th style="with:200px !important" scope="row" colspan="2">Öğrenci Adı / Student Name</th>
+                        <th style="width:35%; !important" scope="row" colspan="2">Öğrenci Adı / Student Name
+                        </th>
                         <td id="studentName"></td>
                     </tr>
                     <tr>
-                        <th style="with:200px !important" scope="row" colspan="2">Öğrenci Soyadı / Student Surname
-                        </th>
+                        <th style="width:35%; !important" scope="row" colspan="2">Öğrenci Soyadı / Student
+                            Surname</th>
                         <td id="studentLastName"></td>
                     </tr>
                     <tr>
-                        <th style="with:200px !important" scope="row" colspan="2">Bölüm / Department</th>
+                        <th style="width:35%; !important" scope="row" colspan="2">Bölüm / Department</th>
                         <td id="department"></td>
                     </tr>
                 </tbody>
