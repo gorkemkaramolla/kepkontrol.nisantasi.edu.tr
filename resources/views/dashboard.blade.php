@@ -152,10 +152,6 @@
                     </p>
                 </div>
                 <div class="col">
-
-
-                    <!-- Button trigger modal -->
-
                     <button type="button" class="btn btn-danger" data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop">
                         Dikkat:
